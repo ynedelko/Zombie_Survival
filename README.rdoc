@@ -26,3 +26,27 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+ <nav class="navbar navbar-default">
+   <div class="container-fluid">
+     <div class="navbar-header">
+       <h1 class='navbar-brand'>Zombie Survival</h1>
+     </div>
+     <div>
+       <ul class="nav navbar-nav">
+         <% if user_signed_in? %>
+           <li>
+             <%= link_to @current_user.name, user_path(@current_user) %>
+           </li>
+         <% end %>
+       </ul>
+       <ul class="nav navbar-nav navbar-right">
+         <% if user_signed_in? %>
+           <li>
+             <%= link_to '<span class="glyphicon glyphicon-log-out"></span> Log Out'.html_safe, log_out_path %>
+           </li>
+         <% end %>
+       </ul>
+     </div>
+   </div>
+ </nav>

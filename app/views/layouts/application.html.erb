@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ZombieSurvival</title>
+  <title>Zombie Survival</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div class="collapse navbar-collapse" id="navbar-collapse-1">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <% if @user %>
+        <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+        <li><%= link_to @user.name, user_path(@user) %></li>
+        <li class="round-image-50"><%= link_to image_tag(current_user.avatar.url(:thumb)), user_path(@user) %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if @user %>
+          <li><%= link_to 'Home', locations_path %></li>
+
+          <li>
+          <%= link_to '<span class="glyphicon glyphicon-log-out"></span> Log Out'.html_safe, destroy_user_session_path, :method => :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to '<span class="glyphicon glyphicon-log-in"></span> Log In'.html_safe, new_user_session_path %>
+          </li>
+          <li>
+            <%= link_to '<span class="glyphicon glyphicon-user"></span> Sign Up'.html_safe, new_user_registration_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
 </body>
 </html>

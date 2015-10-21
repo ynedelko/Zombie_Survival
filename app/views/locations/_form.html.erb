@@ -1,5 +1,22 @@
-<%= form_for @location do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %><br>
-  <%= form.input :avatar, as: :file %>
+<%= form_for @location do |f| %>
+
+<div class="form-group">
+  <%= f.label :avatar, class: 'col-sm-2 control-label', value: 'Image'  %>
+  <div class="col-sm-6">
+      <%= f.file_field :avatar %>
+  </div><br>
+</div><br>
+
+
+<div class="form-group">
+  <%= f.label :name, class: 'col-sm-2 control-label'  %>
+  <div class="col-sm-6">
+      <%= f.text_field :name, autofocus: true, class: 'form-control'  %>
+  </div>
+</div><br>
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-6">
+      <%= f.submit "Create Location", class: "btn btn-primary" %>
+  </div>
+</div><br>
 <% end %>

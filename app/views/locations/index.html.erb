@@ -1,5 +1,16 @@
+<% content_for(:style) do %>
+'http://www.washingtoncitypaper.com/blogs/artsdesk/files/2014/11/BIG-night.jpg'
+<% end %>
+
 <h1>Locations</h1>
 
-<% @locations.each do |location| %>
-<%= link_to location.name, location_path(location) %>
-<% end %>
+<center>
+<div class="row">
+  <% @locations.each do |location| %>
+  <div class="col-md-4">
+    <%= link_to location.name, location_path(location) %><br>
+    <%= image_tag(location.avatar.url(:medium)) %>
+  </div>
+    <% end %>
+</div>
+</center>

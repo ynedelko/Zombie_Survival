@@ -5,25 +5,31 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <style>
+  body {
+    background: url(<%= yield(:style) %>) center center no-repeat;
+    background-size: cover;
+  }
+  </style>
 </head>
 <body>
 
-<div class="collapse navbar-collapse" id="navbar-collapse-1">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
     </div>
     <div>
-      <ul class="nav navbar-nav">
-        <% if @user %>
-        <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-        <li><%= link_to @user.name, user_path(@user) %></li>
-        <li class="round-image-50"><%= link_to image_tag(current_user.avatar.url(:thumb)), user_path(@user) %></li>
+      <ul class="nav navbar-nav  collapse navbar-collapse">
+        <% if current_user %>
+        <li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
+        <li><%= link_to current_user.name, user_path(current_user) %></li>
+        <li class="round-image-50"><%= link_to image_tag(current_user.avatar.url(:thumb)), user_path(current_user) %></li>
         <% end %>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if @user %>
-          <li><%= link_to 'Home', locations_path %></li>
-
+        <% if current_user %>
+        <li><%= link_to 'Home', locations_path %></li>
           <li>
           <%= link_to '<span class="glyphicon glyphicon-log-out"></span> Log Out'.html_safe, destroy_user_session_path, :method => :delete %>
           </li>
@@ -38,7 +44,7 @@
       </ul>
     </div>
   </div>
-</div>
+</nav>
 
   <div class="container">
     <%= yield %>

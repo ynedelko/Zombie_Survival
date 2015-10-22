@@ -7,10 +7,10 @@
 <center>
 <div class="row">
   <% @locations.each do |location| %>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <h4>
     <%= link_to location.name, location_path(location) %><br>
-    <%= image_tag "door.png" %>
+    <%= image_tag "adventure.png" %>
     </h4>
   </div>
     <% end %>

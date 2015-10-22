@@ -11,7 +11,7 @@ _Users:_
 * _Select an adventure. Once you choose your destination, take a look behind each door to see what awaits you._
 * _Feel free to add your own adventures._
 
-_View App:_ https://zombiesurvivalynsm.herokuapp.com/ | https://git.heroku.com/zombiesurvivalynsm.git
+_View App:_ https://zombiesurvivalynsm.herokuapp.com/ 
 
 ## Technology Used
 * _Ruby_

@@ -15,3 +15,13 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+$(document).ready(function() {
+
+ $('.secret-img').hide(); //initially wil be hidden.
+
+  $('.door').click(function() {
+   $(this).find('.secret-img').toggle();//shows on button click
+   $(this).find('.door-img').toggle();
+   });
+ });
